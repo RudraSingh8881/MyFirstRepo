@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaquery.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Rudra Singh</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul></br>
+          <div id="color-options">
+    <button class="color-btn" data-color="#ffffff" style="background:#ffffff;"></button>
+    <button class="color-btn" data-color="#f0f8ff" style="background:#f0f8ff;"></button>
+    <button class="color-btn" data-color="#ffe4e1" style="background:#ffe4e1;"></button>
+    <button class="color-btn" data-color="#222222" style="background:#222222;"></button>
+  </div>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="rudra.jpg"  />
+      </div></br>
+      <div class="section__text">
+        <p class="section_text_p2">Backend Developer</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/resume-example.pdf')"
+          >
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <h3><b>Education</b></h3>
+              <p><b><l>B.C.A Bachelor of computer Application</l></b><br />There are many information collect to computer application and coding experience to absorve this application</p>
+            </div>
+      </div>
+    </section>
+    <section id="experience">
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Frontend Development</h2>
+            <div class="article-container">
+              <article>
+                <div>
+                  <h3>HTML</h3>
+                  <p>It is a standerd markup language who is web page create in file and define structure  or content .
+                    using the tab(heading,paragraph,image,div,section,link,lists and table etc.)</p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>CSS</h3>
+                  <p>Cascading style sheet to provide the layout for index file.It will be web page to appearnce effective and compatible provide.
+                    using the tools(selector[target element],properties[color,size,font,border],values[red 16px],cascading[inline or internal css],background) </p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>JavaScript</h3>
+                  <p>It is a heigh lavel ,dynamic or intrepeter progrming language and use for development.page to create intractive and effective
+                    using the tools(client side[user browser run],dynamic[runtime execution],object-oriented[object or class suportable])</p>
+                </div>
+              </article>
+              <article>
+                  <div>
+                  <h3>mediaquery</h3>
+                  <p>It will be use to diffrent style to website based on various xondition,such as screen size, device type or orientation etc.
+                    using the tools(responsive design[adjust diffrent screen],conditional[width screen,height or orientation],flexible[create diffrent layout])</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Backend Development</h2>
+            <div class="article-container">
+              <article>
+                <div>
+                  <h3>MongoDB[Database conection]</h3>
+                  <p>It is a manegment system know called that document-oriented database.They are store dat json-like document.
+                    using the tools(document-oriented[store json-like format],schema-less[automatic store data],scalability[horizental scaling suport])</p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>Node JS</h3>
+                  <p>It is a open source,cross-platform javascript runtime environment then developer server-side built application.
+                    using the tools(asynchronous[multiple request handle],event-driven[architecture-event handle],single-thread[concurent-conection])</p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>Express JS</h3>
+                  <p>It is a framework built web application and light-weight flexible or fast efficiently web-application acess.
+                    use the tools(request-response[object provide and handle http req-res],middleware[code ko moduler and reusble],routing[diffrent http request handle]) </p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>Git/Github</h3>
+                  <p>It is a manage of code sequrity provide and web based platform or git repository host .Developer to collab this platform.
+                    use the tools(version control[different version track],branching[diffrent feature independently use]merging [diffrent branch merge]) </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="projects">
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="rudra.jpg"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Project</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      </section>
+      <!-- Contact Form Section -->
+<section id="contact-form">
+  <h2>Contact Us</h2>
+  <form>
+    <label for="fullname">Full Name:</label>
+    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location" placeholder="Enter your location" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" placeholder="Write your message" required></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+    <section id="contact">
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" alt="Email Icon" width="40" height="40">
+          <p><a href="mailto:examplemail@gmail.com">Example@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn Icon" width="40" height="40">
+          <p><a href="https://www.linkedin.com">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+  <nav>
+    <div class="nav-links-container">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Social Icons -->
+  <div class="footer-socials">
+    <a href="mailto:yourmail@example.com" target="_blank">
+      <img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" alt="Email" width="30" height="30">
+    </a>
+    <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
+      <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn" width="30" height="30">
+    </a>
+  </div>
+
+  <p>Copyright &#169; 2025 . All Rights Reserved.</p>
+</footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
