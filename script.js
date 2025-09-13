@@ -3,6 +3,7 @@ function toggleMenu() {
     const icon = document.querySelector(".hamburger-icon");
     menu.classList.toggle("open");
     icon.classList.toggle("open");
+<<<<<<< HEAD
   }
   function scrollToTop() {
   window.scrollTo({
@@ -56,3 +57,6 @@ function toggleMenu() {
 
 
   
+=======
+  }
+>>>>>>> 5bea60ddf800f859d87f488d29488a61a5406730
