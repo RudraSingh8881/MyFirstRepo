@@ -1,62 +1,33 @@
+// Hamburger Menu Toggle
 function toggleMenu() {
-    const menu = document.querySelector(".menu-links");
-    const icon = document.querySelector(".hamburger-icon");
+  const menu = document.querySelector(".menu-links");
+  const icon = document.querySelector(".hamburger-icon");
+  if (menu && icon) {
     menu.classList.toggle("open");
     icon.classList.toggle("open");
-<<<<<<< HEAD
   }
-  function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
 }
 
-  
-  
-  // Function to apply selected color
-  function applyColor(color) {
-    document.documentElement.style.setProperty('--primary-color', color);
-  }
+// Smooth Scroll to Top
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-  // On page load, check localStorage and apply saved color
-  window.addEventListener('DOMContentLoaded', () => {
-    const savedColor = localStorage.getItem('selectedColor');
-    if (savedColor) {
-      applyColor(savedColor);
-    }
-  });
+// Apply Selected Color Theme
+function applyColor(color) {
+  document.documentElement.style.setProperty("--main-bg", color);
+  localStorage.setItem("selectedColor", color);
+}
 
-  // Color button click event
-  document.querySelectorAll('.color-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const selectedColor = button.getAttribute('data-color');
+// Load Saved Theme on Every Page
+window.addEventListener("DOMContentLoaded", () => {
+  const savedColor = localStorage.getItem("selectedColor");
+  if (savedColor) applyColor(savedColor);
+
+  document.querySelectorAll(".color-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const selectedColor = btn.getAttribute("data-color");
       applyColor(selectedColor);
-      localStorage.setItem('selectedColor', selectedColor);
     });
   });
-
-  
-  const buttons = document.querySelectorAll('.color-btn');
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const color = button.getAttribute('data-color');
-      document.documentElement.style.setProperty('--primary-color', color);
-    });
-  });
-
-  
-  const colorButtons = document.querySelectorAll('.color-btn');
-      colorButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const selectedColor = btn.getAttribute('data-color');
-          document.documentElement.style.setProperty('--main-bg-color', selectedColor);
-        });
-      });
-
-
-
-  
-=======
-  }
->>>>>>> 5bea60ddf800f859d87f488d29488a61a5406730
+});
