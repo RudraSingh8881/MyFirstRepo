@@ -1,0 +1,25 @@
+{
+  "projects": [
+    {
+      "title": "Project 1",
+      "description": "A web application for managing tasks and to-do lists.",
+      "image": "path/to/project1-image.jpg",
+      "githubLink": "https://github.com/RudraSingh8881/project1",
+      "liveDemo": "https://project1-live-demo.com"
+    },
+    {
+      "title": "Project 2",
+      "description": "An e-commerce website for buying and selling products.",
+      "image": "path/to/project2-image.jpg",
+      "githubLink": "https://github.com/RudraSingh8881/project2",
+      "liveDemo": "https://project2-live-demo.com"
+    },
+    {
+      "title": "Project 3",
+      "description": "A personal blog platform for sharing articles and stories.",
+      "image": "path/to/project3-image.jpg",
+      "githubLink": "https://github.com/RudraSingh8881/project3",
+      "liveDemo": "https://project3-live-demo.com"
+    }
+  ]
+}

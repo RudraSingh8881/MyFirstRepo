@@ -1,0 +1,48 @@
+@media (max-width: 1200px) {
+  #desktop-nav {
+    display: none;
+  }
+  #hamburger-nav {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section__pic-container img {
+    width: 100%;
+    height: auto;
+  }
+
+  .btn-container {
+    flex-direction: column;
+  }
+
+  .project-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5em;
+  }
+
+  .section__text p {
+    font-size: 0.9em;
+  }
+
+  .contact-info-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-socials a {
+    margin: 0 10px;
+  }
+}

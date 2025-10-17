@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mediaquery.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Rudra Singh</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div id="color-options">
+          <button class="color-btn" data-color="#f0f8ff" style="background:#f0f8ff;"></button>
+          <button class="color-btn" data-color="#ffe4e1" style="background:#ffe4e1;"></button>
+        </div>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="assets/images/rudra.jpg" alt="Profile Picture" />
+      </div>
+      <div class="section__text">
+        <p class="section_text_p2">Backend Developer</p>
+        <div class="btn-container">
+          <button class="btn btn-color-2" onclick="window.open('https://drive.google.com/file/d/1G3aN2pOfrxnCL31xSGNkmoFC4p8t5EQR/view?usp=sharing')">
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='#contact'">
+            Contact Info
+          </button>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <h3><b>Education</b></h3>
+              <p><b>B.C.A Bachelor of Computer Application</b><br />There are many information collect to computer application and coding experience to absorb this application.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="experience">
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Frontend Development</h2>
+            <div class="article-container">
+              <article>
+                <div>
+                  <h3>HTML</h3>
+                  <p>It is a standard markup language used to create web pages and define structure or content.</p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>CSS</h3>
+                  <p>Cascading Style Sheets provide the layout for web pages, enhancing appearance and compatibility.</p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>JavaScript</h3>
+                  <p>A high-level, dynamic programming language used for creating interactive web pages.</p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>Media Queries</h3>
+                  <p>Used to apply different styles based on screen size, device type, or orientation.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Backend Development</h2>
+            <div class="article-container">
+              <article>
+                <div>
+                  <h3>MongoDB</h3>
+                  <p>A document-oriented database management system that stores data in JSON-like documents.</p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>Node.js</h3>
+                  <p>An open-source, cross-platform JavaScript runtime environment for building server-side applications.</p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>Express.js</h3>
+                  <p>A lightweight framework for building web applications and APIs in Node.js.</p>
+                </div>
+              </article>
+              <article>
+                <div>
+                  <h3>Git/GitHub</h3>
+                  <p>A version control system for tracking changes in code and collaborating on projects.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="projects">
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img src="assets/images/books.jpeg" alt="Project 1" class="project-img" />
+            </div>
+            <h2 class="experience-sub-title project-title">Project</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/RudraSingh8881/books.git'">
+                GitHub
+              </button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://books-k03j.onrender.com'">
+                Live Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <h1 class="title">Contact Me</h1>
+
+      <form id="contact-form" class="contact-form">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input id="name" name="from_name" type="text" required />
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="reply_to" type="email" required />
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+        <div class="form-row">
+          <button type="submit" class="btn btn-color-1">Send Message</button>
+        </div>
+      </form>
+
+      <!-- EmailJS client-side integration -->
+      <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+      <script>
+        (function () {
+          // Replace with your EmailJS public key
+          emailjs.init('YOUR_PUBLIC_KEY');
+        })();
+
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+          e.preventDefault();
+          // Replace with your EmailJS service ID and template ID
+          emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(function () {
+          alert('Message sent successfully.');
+          document.getElementById('contact-form').reset();
+        }, function (err) {
+          alert('Send failed. Please try again later.');
+          console.error('EmailJS error:', err);
+        });
+        });
+      </script></form>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" alt="Email Icon" width="40" height="40">
+          <p><a href="mailto:examplemail@gmail.com">Example@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn Icon" width="40" height="40">
+          <p><a href="https://www.linkedin.com">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="footer-socials">
+        <a href="mailto:yourmail@example.com" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" alt="Email" width="30" height="30">
+        </a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn" width="30" height="30">
+        </a>
+      </div>
+      <p>Copyright &#169; 2025. All Rights Reserved.</p>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>
