@@ -50,7 +50,7 @@
         <div class="btn-container">
           <button
             class="btn btn-color-2"
-            onclick="window.open('./assets/resume-example.pdf')"
+            onclick="window.open('https://photos.app.goo.gl/n2pLLWieKRXy7BSU7')"
           >
             Download CV
           </button>
@@ -159,13 +159,13 @@
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
+                onclick="location.href='https://github.com/RudraSingh8881/books.git'"
               >
                 Github
               </button>
               <button
                 class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
+                onclick="location.href='https://books-k03j.onrender.com'"
               >
                 Live Demo
               </button>
@@ -232,5 +232,29 @@
 </footer>
 
     <script src="script.js"></script>
+    
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyA-_IOB6vEF1bhXf3LHaQYALhJc25roPs0",
+    authDomain: "rudra-123e8.firebaseapp.com",
+    projectId: "rudra-123e8",
+    storageBucket: "rudra-123e8.firebasestorage.app",
+    messagingSenderId: "111023858183",
+    appId: "1:111023858183:web:6cc5104608d70880de00a2",
+    measurementId: "G-9CYEBRMB7N"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
   </body>
 </html>
