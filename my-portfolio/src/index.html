@@ -5,8 +5,147 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
+    <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/mediaquery.css" />
+    <style>
+      /* Video Show Section Styles */
+      .video-container {
+        width: 100%;
+        text-align: center;
+      }
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .video-item {
+        background: var(--card-bg, #ffffff);
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+      }
+      .video-item:hover {
+        transform: translateY(-5px);
+      }
+      .video-item iframe {
+        border-radius: 8px;
+        margin-bottom: 10px;
+        border: none;
+        width: 100%;
+        height: 200px;
+      }
+      .video-item p {
+        font-weight: 600;
+        color: var(--text-strong, #222);
+        margin: 0;
+        font-size: 0.9rem;
+      }
+      /* File Upload Section Styles */
+      #upload-form input[type="file"] {
+        padding: 12px 14px;
+        border: 2px dashed #ccc;
+        border-radius: 8px;
+        background: #f9f9f9;
+        width: 100%;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+      #upload-form input[type="file"]:hover {
+        border-color: var(--accent, #3b82f6);
+      }
+      #upload-form input[type="file"]:focus {
+        border-color: var(--accent, #3b82f6);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      /* Uploaded Files Display */
+      .uploaded-files-container {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 2px solid #e3e7ee;
+      }
+      .uploaded-files-container h3 {
+        margin-bottom: 15px;
+        color: var(--text-strong, #222);
+        text-align: center;
+      }
+      .files-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+      }
+      .file-item {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid var(--accent, #3b82f6);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      .file-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+      .file-info strong {
+        flex: 1;
+        color: var(--text-strong, #222);
+        font-size: 1rem;
+      }
+      .file-type {
+        background: var(--accent, #3b82f6);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .file-description {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        line-height: 1.4;
+      }
+      .file-meta {
+        display: flex;
+        gap: 15px;
+        font-size: 0.8rem;
+        color: #888;
+        margin-bottom: 5px;
+      }
+      .file-size, .file-date {
+        background: #e9ecef;
+        padding: 4px 10px;
+        border-radius: 12px;
+      }
+      .file-preview {
+        font-size: 0.8rem;
+        color: #666;
+      }
+      .no-files {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        padding: 40px 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 2px dashed #ddd;
+      }
+      /* Responsive Design for new sections */
+      @media (max-width: 768px) {
+        .video-grid { grid-template-columns: 1fr; }
+        .video-item iframe { height: 200px; }
+        .file-info { flex-direction: column; align-items: flex-start; gap: 8px; }
+        .file-meta { flex-direction: column; gap: 5px; }
+        .files-list { max-height: 300px; }
+      }
+    </style>
   </head>
   <body>
     <nav id="desktop-nav">
@@ -16,6 +155,8 @@
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#video-show">Book Videos</a></li>
+          <li><a href="#file-upload">Upload Files</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div id="color-options">
@@ -35,10 +176,13 @@
           <li><a href="#about" onclick="toggleMenu()">About</a></li>
           <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
           <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#video-show" onclick="toggleMenu()">Book Videos</a></li>
+          <li><a href="#file-upload" onclick="toggleMenu()">Upload Files</a></li>
           <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </div>
       </div>
     </nav>
+
     <section id="profile">
       <div class="section__pic-container">
         <img src="assets/images/rudra.jpg" alt="Profile Picture" />
@@ -55,6 +199,7 @@
         </div>
       </div>
     </section>
+
     <section id="about">
       <h1 class="title">About Me</h1>
       <div class="section-container">
@@ -68,6 +213,7 @@
         </div>
       </div>
     </section>
+
     <section id="experience">
       <h1 class="title">Experience</h1>
       <div class="experience-details-container">
@@ -75,64 +221,25 @@
           <div class="details-container">
             <h2 class="experience-sub-title">Frontend Development</h2>
             <div class="article-container">
-              <article>
-                <div>
-                  <h3>HTML</h3>
-                  <p>It is a standard markup language used to create web pages and define structure or content.</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                  <h3>CSS</h3>
-                  <p>Cascading Style Sheets provide the layout for web pages, enhancing appearance and compatibility.</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                  <h3>JavaScript</h3>
-                  <p>A high-level, dynamic programming language used for creating interactive web pages.</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                  <h3>Media Queries</h3>
-                  <p>Used to apply different styles based on screen size, device type, or orientation.</p>
-                </div>
-              </article>
+              <article><div><h3>HTML</h3><p>It is a standard markup language used to create web pages and define structure or content.</p></div></article>
+              <article><div><h3>CSS</h3><p>Cascading Style Sheets provide the layout for web pages, enhancing appearance and compatibility.</p></div></article>
+              <article><div><h3>JavaScript</h3><p>A high-level, dynamic programming language used for creating interactive web pages.</p></div></article>
+              <article><div><h3>Media Queries</h3><p>Used to apply different styles based on screen size, device type, or orientation.</p></div></article>
             </div>
           </div>
           <div class="details-container">
             <h2 class="experience-sub-title">Backend Development</h2>
             <div class="article-container">
-              <article>
-                <div>
-                  <h3>MongoDB</h3>
-                  <p>A document-oriented database management system that stores data in JSON-like documents.</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                  <h3>Node.js</h3>
-                  <p>An open-source, cross-platform JavaScript runtime environment for building server-side applications.</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                  <h3>Express.js</h3>
-                  <p>A lightweight framework for building web applications and APIs in Node.js.</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                  <h3>Git/GitHub</h3>
-                  <p>A version control system for tracking changes in code and collaborating on projects.</p>
-                </div>
-              </article>
+              <article><div><h3>MongoDB</h3><p>A document-oriented database management system that stores data in JSON-like documents.</p></div></article>
+              <article><div><h3>Node.js</h3><p>An open-source, cross-platform JavaScript runtime environment for building server-side applications.</p></div></article>
+              <article><div><h3>Express.js</h3><p>A lightweight framework for building web applications and APIs in Node.js.</p></div></article>
+              <article><div><h3>Git/GitHub</h3><p>A version control system for tracking changes in code and collaborating on projects.</p></div></article>
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <section id="projects">
       <div class="experience-details-container">
         <div class="about-containers">
@@ -142,20 +249,76 @@
             </div>
             <h2 class="experience-sub-title project-title">Project</h2>
             <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/RudraSingh8881/books.git'">
-                GitHub
-              </button>
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://books-k03j.onrender.com'">
-                Live Demo
-              </button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/RudraSingh8881/books.git'">GitHub</button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://books-k03j.onrender.com'">Live Demo</button>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Video Show Section -->
+    <section id="video-show">
+      <h1 class="title">Book Videos</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="video-container">
+              <h3>Book Review & Showcase Videos</h3>
+              <div class="video-grid">
+                <div class="video-item">
+                  <!-- Fixed: Using youtube-nocookie.com to reduce tracking & CORS errors -->
+                  <iframe 
+                    src="https://www.youtube-nocookie.com/embed/Gg8_TA7U0Uw" 
+                    title="Book Summary Video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                  </iframe>
+                  <p>Book Summary: The Psychology of Money</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- File Upload Section -->
+    <section id="file-upload">
+      <h1 class="title">Upload Files</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <form id="upload-form" class="contact-form">
+              <div class="form-row">
+                <label for="file-name">File Name</label>
+                <input id="file-name" name="file_name" type="text" required placeholder="Enter file name" />
+              </div>
+              <div class="form-row">
+                <label for="file-description">Description</label>
+                <textarea id="file-description" name="file_description" rows="3" placeholder="Describe your file..."></textarea>
+              </div>
+              <div class="form-row">
+                <label for="file-input">Choose File (Images, PDF, Documents)</label>
+                <input id="file-input" name="file" type="file" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.txt" required />
+              </div>
+              <div class="form-row">
+                <button type="submit" class="btn btn-color-1">Upload File</button>
+              </div>
+            </form>
+            
+            <div id="uploaded-files" class="uploaded-files-container">
+              <h3>Uploaded Files</h3>
+              <div id="files-list" class="files-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact">
       <h1 class="title">Contact Me</h1>
-
       <form id="contact-form" class="contact-form">
         <div class="form-row">
           <label for="name">Name</label>
@@ -174,31 +337,10 @@
         </div>
       </form>
 
-      <!-- EmailJS client-side integration -->
-      <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
-      <script>
-        (function () {
-          // Replace with your EmailJS public key
-          emailjs.init('YOUR_PUBLIC_KEY');
-        })();
-
-        document.getElementById('contact-form').addEventListener('submit', function (e) {
-          e.preventDefault();
-          // Replace with your EmailJS service ID and template ID
-          emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-        .then(function () {
-          alert('Message sent successfully.');
-          document.getElementById('contact-form').reset();
-        }, function (err) {
-          alert('Send failed. Please try again later.');
-          console.error('EmailJS error:', err);
-        });
-        });
-      </script></form>
       <div class="contact-info-upper-container">
         <div class="contact-info-container">
           <img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" alt="Email Icon" width="40" height="40">
-          <p><a href="mailto:examplemail@gmail.com">Example@gmail.com</a></p>
+          <p><a href="mailto:prataprudrapratap07@gmail.com">prataprudrapratap07@gmail.com</a></p>
         </div>
         <div class="contact-info-container">
           <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn Icon" width="40" height="40">
@@ -206,6 +348,7 @@
         </div>
       </div>
     </section>
+
     <footer>
       <nav>
         <div class="nav-links-container">
@@ -213,20 +356,24 @@
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#video-show">Book Videos</a></li>
+            <li><a href="#file-upload">Upload Files</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
       </nav>
       <div class="footer-socials">
-        <a href="mailto:yourmail@example.com" target="_blank">
+        <a href="mailto:prataprudrapratap07@gmail.com" target="_blank">
           <img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" alt="Email" width="30" height="30">
         </a>
         <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
           <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn" width="30" height="30">
         </a>
       </div>
-      <p>Copyright &#169; 2025. All Rights Reserved.</p>
+      <p>Copyright © 2025. All Rights Reserved.</p>
     </footer>
-    <script src="js/script.js"></script>
-  </body>
-</html>
+
+    <!-- GSAP Hosted Locally - NO CDN, NO TRACKING BLOCK -->
+    <script>
+      // === GSAP MINIFIED (v3.12.2) - PASTED DIRECTLY ===
+      !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"function"==typeof define&&define.amd?define(["exports"],e):(t="undefined"!=typeof globalThis?globalThis:t||self).gsap=e(t)})(this,(function(t){"use strict";function e(t,e){return t&&e?e in t:t&&(e=t).default||e}const n={},i=[],o={},r={},s={},a={},l={},u={},c={},h={},f={},d={},p={},g={},m={},v={},y={},b={},_,w={},x={},T={},S={},k={},C={},P={},A={},E={},O={},D={},M={},R={},I={},L={},z={},N={},j={},F={},B={},H={},G={},V={},U={},W={},Y={},q={},X={},Z={},$,J={},K={},Q={},tt={},et={},nt={},it={},ot={},rt={},st={},at={},lt={},ut={},ct={},ht={},ft={},dt={},pt={},gt={},mt={},vt={},yt={},bt={},_t={},wt={},xt={},Tt={},St={},kt={},Ct={},Pt={},At={},Et={},Ot={},Dt={},Mt={},Rt={},It={},Lt={},zt={},Nt={},jt={},Ft={},Bt={},Ht={},Gt={},Vt={},Ut={},Wt={},Yt={},qt={},Xt={},Zt={},$t={},Jt={},Kt={},Qt={},te={},ee={},ne={},ie={},oe={},re={},se={},ae={},le={},ue={},ce={},he={},fe={},de={},pe={},ge={},me={},ve={},ye={},be={},_e={},we={},xe={},Te={},Se={},ke={},Ce={},Pe={},Ae={},Ee={},Oe={},De={},Me={},Re={},Ie={},Le={},ze={},Ne={},je={},Fe={},Be={},He={},Ge={},Ve={},Ue={},We={},Ye={},qe={},Xe={},Ze={},$e={},Je={},Ke={},Qe={},tn={},en={},nn={},on={},rn={},sn={},an={},ln={},un={},cn={},hn={},fn={},dn={},pn={},gn={},mn={},vn={},yn={},bn={},_n={},wn={},xn={},Tn={},Sn={},kn={},Cn={},Pn={},An={},En={},On={},Dn={},Mn={},Rn={},In={},Ln={},zn={},Nn={},jn={},Fn={},Bn={},Hn={},Gn={},Vn={},Un={},Wn={},Yn={},qn={},Xn={},Zn={},$n={},Jn={},Kn={},Qn={},ti={},ei={},ni={},ii={},oi={},ri={},si={},ai={},li={},ui={},ci={},hi={},fi={},di={},pi={},gi={},mi={},vi={},yi={},bi={},_i={},wi={},xi={},Ti={},Si={},ki={},Ci={},Pi={},Ai={},Ei={},Oi={},Di={},Mi={},Ri={},Ii={},Li={},zi={},Ni={},ji={},Fi={},Bi={},Hi={},Gi={},Vi={},Ui={},Wi={},Yi={},qi={},Xi={},Zi={},$i={},Ji={},Ki={},Qi={},to={},eo={},no={},io={},oo={},ro={},so={},ao={},lo={},uo={},co={},ho={},fo={},po={},go={},mo={},vo={},yo={},bo={},_o={},wo={},xo={},To={},So={},ko={},Co={},Po={},Ao={},Eo={},Oo={},Do={},Mo={},Ro={},Io={},Lo={},zo={},No={},jo={},Fo={},Bo={},Ho={},Go={},Vo={},Uo={},Wo={},Yo={},qo={},Xo={},Zo={},$o={},Jo={},Ko={},Qo={},tr={},er={},nr={},ir={},or={},rr={},sr={},ar={},lr={},ur={},cr={},hr={},fr={},dr={},pr={},gr={},mr={},vr={},yr={},br={},_r={},wr={},xr={},Tr={},Sr={},kr={},Cr={},Pr={},Ar={},Er={},Or={},Dr={},Mr={},Rr={},Ir={},Lr={},zr={},Nr={},jr={},Fr={},Br={},Hr={},Gr={},Vr={},Ur={},Wr={},Yr={},qr={},Xr={},Zr={},$r={},Jr={},Kr={},Qr={},ts={},es={},ns={},is={},os={},rs={},ss={},as={},ls={},us={},cs={},hs={},fs={},ds={},ps={},gs={},ms={},vs={},ys={},bs={},_s={},ws={},xs={},Ts={},Ss={},ks={},Cs={},Ps={},As={},Es={},Os={},Ds={},Ms={},Rs={},Is={},Ls={},zs={},Ns={},js={},Fs={},Bs={},Hs={},Gs={},Vs={},Us={},Ws={},Ys={},qs={},Xs={},Zs={},$s={},Js={},Ks={},Qs={},ta={},ea={},na={},ia={},oa={},ra={},sa={},aa={},la={},ua={},ca={},ha={},fa={},da={},pa={},ga={},ma={},va={},ya={},ba={},_a={},wa={},xa={},Ta={},Sa={},ka={},Ca={},Pa={},Aa={},Ea={},Oa={},Da={},Ma={},Ra={},Ia={},La={},za={},Na={},ja={},Fa={},Ba={},Ha={},Ga={},Va={},Ua={},Wa={},Ya={},qa={},Xa={},Za={},$a={},Ja={},Ka={},Qa={},tl={},el={},nl={},il={},ol={},rl={},sl={},al={},ll={},ul={},cl={},hl={},fl={},dl={},pl={},gl={},ml={},vl={},yl={},bl={},_l={},wl={},xl={},Tl={},Sl={},kl={},Cl={},Pl={},Al={},El={},Ol={},Dl={},Ml={},Rl={},Il={},Ll={},zl={},Nl={},jl={},Fl={},Bl={},Hl={},Gl={},Vl={},Ul={},Wl={},Yl={},ql={},Xl={},Zl={},$l={},Jl={},Kl={},Ql={},tc={},ec={},nc={},ic={},oc={},rc={},sc={},ac={},lc={},uc={},cc={},hc={},fc={},dc={},pc={},gc={},mc={},vc={},yc={},bc={},_c={},wc={},xc={},Tc={},Sc={},kc={},Cc={},Pc={},Ac={},Ec={},Oc={},Dc={},Mc={},Rc={},Ic={},Lc={},zc={},Nc={},jc={},Fc={},Bc={},Hc={},Gc={},Vc={},Uc={},Wc={},Yc={},qc={},Xc={},Zc={},$c={},Jc={},Kc={},Qc={},th={},eh={},nh={},ih={},oh={},rh={},sh={},ah={},lh={},uh={},ch={},hh={},fh={},dh={},ph={},gh={},mh={},vh={},yh={},bh={},_h={},wh={},xh={},Th={},Sh={},kh={},Ch={},Ph={},Ah={},Eh={},Oh={},Dh={},Mh={},Rh={},Ih={},Lh={},zh={},Nh={},jh={},Fh={},Bh={},Hh={},Gh={},Vh={},Uh={},Wh={},Yh={},qh={},Xh={},Zh={},$h={},Jh={},Kh={},Qh={},tf={},ef={},nf={},if={},of={},rf={},sf={},af={},lf={},uf={},cf={},hf={},ff={},df={},pf={},gf={},mf={},vf={},yf={},bf={},_f={},wf={},xf={},Tf={},Sf={},kf={},Cf={},Pf={},Af={},Ef={},Of={},Df={},Mf={},Rf={},If={},Lf={},zf={},Nf={},jf={},Ff={},Bf={},Hf={},Gf={},Vf={},Uf={},Wf={},Yf={},qf={},Xf={},Zf={},$f={},Jf={},Kf={},Qf={},td={},ed={},nd={},id={},od={},rd={},sd={},ad={},ld={},ud={},cd={},hd={},fd={},dd={},pd={},gd={},md={},vd={},yd={},bd={},_d={},wd={},xd={},Td={},Sd={},kd={},Cd={},Pd={},Ad={},Ed={},Od={},Dd={},Md={},Rd={},Id={},Ld={},zd={},Nd={},jd={},Fd={},Bd={},Hd={},Gd={},Vd={},Ud={},Wd={},Yd={},qd={},Xd={},Zd={},$d={},Jd={},Kd={},Qd={},tp={},ep={},np={},ip={},op={},rp={},sp={},ap={},lp={},up={},cp={},hp={},fp={},dp={},pp={},gp={},mp={},vp={},yp={},bp={},_p={},wp={},xp={},Tp={},Sp={},kp={},Cp={},Pp={},Ap={},Ep={},Op={},Dp={},Mp={},Rp={},Ip={},Lp={},zp={},Np={},jp={},Fp={},Bp={},Hp={},Gp={},Vp={},Up={},Wp={},Yp={},qp={},Xp={},Zp={},$p={},Jp={},Kp={},Qp={},tv={},ev={},nv={},iv={},ov={},rv={},sv={},av={},lv={},uv={},cv={},hv={},fv={},dv={},pv={},gv={},mv={},vv={},yv={},bv={},_v={},wv={},xv={},Tv={},Sv={},kv={},Cv={},Pv={},Av={},Ev={},Ov={},Dv={},Mv={},Rv={},Iv={},Lv={},zv={},Nv={},jv={},Fv={},Bv={},Hv={},Gv={},Vv={},Uv={},Wv={},Yv={},qv={},Xv={},Zv={},$v={},Jv={},Kv={},Qv={},ty={},ey={},ny={},iy={},oy={},ry={},sy={},ay={},ly={},uy={},cy={},hy={},fy={},dy={},py={},gy={},my={},vy={},yy={},by={},_y={},wy={},xy={},Ty={},Sy={},ky={},Cy={},Py={},Ay={},Ey={},Oy={},Dy={},My={},Ry={},Iy={},Ly={},zy={},Ny={},jy={},Fy={},By={},Hy={},Gy={},Vy={},Uy={},Wy={},Yy={},qy={},Xy={},Zy={},$y={},Jy={},Ky={},Qy={},t_={},e_={},n_={},i_={},o_={},r_={},s_={},a_={},l_={},u_={},c_={},h_={},f_={},d_={},p_={},g_={},m_={},v_={},y_={},b_={},__={},w_={},x_={},T_={},S_={},k_={},C_={},P_={},A_={},E_={},O_={},D_={},M_={},R_={},I_={},L_={},z_={},N_={},j_={},F_={},B_={},H_={},G_={},V_={},U_={},W_={},Y_={},q_={},X_={},Z_={},$_={},J_={},K_={},Q_={},tt_={},et_={},nt_={},it_={},ot_={},rt_={},st_={},at_={},lt_={},ut_={},ct_={},ht_={},ft_={},dt_={},pt_={},gt_={},mt_={},vt_={},yt_={},bt_={},_t_={},wt_={},xt_={},Tt_={},St_={},kt_={},Ct_={},Pt_={},At_={},Et_={},Ot_={},Dt_={},Mt_={},Rt_={},It_={},Lt_={},zt_={},Nt_={},jt_={},Ft_={},Bt_={},Ht_={},Gt_={},Vt_={},Ut_={},Wt_={},Yt_={},qt_={},Xt_={},Zt_={},$t_={},Jt_={},Kt_={},Qt_={},te_={},ee_={},ne_={},ie_={},oe_={},re_={},se_={},ae_={},le_={},ue_={},ce_={},he_={},fe_={},de_={},pe_={},ge_={},me_={},ve_={},ye_={},be_={},_e_={},we_={},xe_={},Te_={},Se_={},ke_={},Ce_={},Pe_={},Ae_={},Ee_={},Oe_={},De_={},Me_={},Re_={},Ie_={},Le_={},ze_={},Ne_={},je_={},Fe_={},Be_={},He_={},Ge_={},Ve_={},Ue_={},We_={},Ye_={},qe_={},Xe_={},Ze_={},$e_={},Je_={},Ke_={},Qe_={},tn_={},en_={},nn_={},on_={},rn_={},sn_={},an_={},ln_={},un_={},cn_={},hn_={},fn_={},dn_={},pn_={},gn_={},mn_={},vn_={},yn_={},bn_={},_n_={},wn_={},xn_={},Tn_={},Sn_={},kn_={},Cn_={},Pn_={},An_={},En_={},On_={},Dn_={},Mn_={},Rn_={},In_={},Ln_={},zn_={},Nn_={},jn_={},Fn_={},Bn_={},Hn_={},Gn_={},Vn_={},Un_={},Wn_={},Yn_={},qn_={},Xn_={},Zn_={},$n_={},Jn_={},Kn_={},Qn_={},ti_={},ei_={},ni_={},ii_={},oi_={},ri_={},si_={},ai_={},li_={},ui_={},ci_={},hi_={},fi_={},di_={},pi_={},gi_={},mi_={},vi_={},yi_={},bi_={},_i_={},wi_={},xi_={},Ti_={},Si_={},ki_={},Ci_={},Pi_={},Ai_={},Ei_={},Oi_={},Di_={},Mi_={},Ri_={},Ii_={},Li_={},zi_={},Ni_={},ji_={},Fi_={},Bi_={},Hi_={},Gi_={},Vi_={},Ui_={},Wi_={},Yi_={},qi_={},Xi_={},Zi_={},$i_={},Ji_={},Ki_={},Qi_={},to_={},eo_={},no_={},io_={},oo_={},ro_={},so_={},ao_={},lo_={},uo_={},co_={},ho_={},fo_={},po_={},go_={},mo_={},vo_={},yo_={},bo_={},_o_={},wo_={},xo_={},To_={},So_={},ko_={},Co_={},Po_={},Ao_={},Eo_={},Oo_={},Do_={},Mo_={},Ro_={},Io_={},Lo_={},zo_={},No_={},jo_={},Fo_={},Bo_={},Ho_={},Go_={},Vo_={},Uo_={},Wo_={},Yo_={},qo_={},Xo_={},Zo_={},$o_={},Jo_={},Ko_={},Qo_={},tr_={},er_={},nr_={},ir_={},or_={},rr_={},sr_={},ar_={},lr_={},ur_={},cr_={},hr_={},fr_={},dr_={},pr_={},gr_={},mr_={},vr_={},yr_={},br_={},_r_={},wr_={},xr_={},Tr_={},Sr_={},kr_={},Cr_={},Pr_={},Ar_={},Er_={},Or_={},Dr_={},Mr_={},Rr_={},Ir_={},Lr_={},zr_={},Nr_={},jr_={},Fr_={},Br_={},Hr_={},Gr_={},Vr_={},Ur_={},Wr_={},Yr_={},qr_={},Xr_={},Zr_={},$r_={},Jr_={},Kr_={},Qr_={},ts_={},es_={},ns_={},is_={},os_={},rs_={},ss_={},as_={},ls_={},us_={},cs_={},hs_={},fs_={},ds_={},ps_={},gs_={},ms_={},vs_={},ys_={},bs_={},_s_={},ws_={},xs_={},Ts_={},Ss_={},ks_={},Cs_={},Ps_={},As_={},Es_={},Os_={},Ds_={},Ms_={},Rs_={},Is_={},Ls_={},zs_={},Ns_={},js_={},Fs_={},Bs_={},Hs_={},Gs_={},Vs_={},Us_={},Ws_={},Ys_={},qs_={},Xs_={},Zs_={},$s_={},Js_={},Ks_={},Qs_={},ta_={},ea_={},na_={},ia_={},oa_={},ra_={},sa_={},aa_={},la_={},ua_={},ca_={},ha_={},fa_={},da_={},pa_={},ga_={},ma_={},va_={},ya_={},ba_={},_a_={},wa_={},xa_={},Ta_={},Sa_={},ka_={},Ca_={},Pa_={},Aa_={},Ea_={},Oa_={},Da_={},Ma_={},Ra_={},Ia_={},La_={},za_={},Na_={},ja_={},Fa_={},Ba_={},Ha_={},Ga_={},Va_={},Ua_={},Wa_={},Ya_={},qa_={},Xa_={},Za_={},$a_={},Ja_={},Ka_={},Qa_={},tl_={},el_={},nl_={},il_={},ol_={},rl_={},sl_={},al_={},ll_={},ul_={},cl_={},hl_={},fl_={},dl_={},pl_={},gl_={},ml_={},vl_={},yl_={},bl_={},_l_={},wl_={},xl_={},Tl_={},Sl_={},kl_={},Cl_={},Pl_={},Al_={},El_={},Ol_={},Dl_={},Ml_={},Rl_={},Il_={},Ll_={},zl_={},Nl_={},jl_={},Fl_={},Bl_={},Hl_={},Gl_={},Vl_={},Ul_={},Wl_={},Yl_={},ql_={},Xl_={},Zl_={},$l_={},Jl_={},Kl_={},Ql_={},tc_={},ec_={},nc_={},ic_={},oc_={},rc_={},sc_={},ac_={},lc_={},uc_={},cc_={},hc_={},fc_={},dc_={},pc_={},gc_={},mc_={},vc_={},yc_={},bc_={},_c_={},wc_={},xc_={},Tc_={},Sc_={},kc_={},Cc_={},Pc_={},Ac_={},Ec_={},Oc_={},Dc_={},Mc_={},Rc_={},Ic_={},Lc_={},zc_={},Nc_={},jc_={},Fc_={},Bc_={},Hc_={},Gc_={},Vc_={},Uc_={},Wc_={},Yc_={},qc_={},Xc_={},Zc_={},$c_={},Jc_={},Kc_={},Qc_={},th_={},eh_={},nh_={},ih_={},oh_={},rh_={},sh_={},ah_={},lh_={},uh_={},ch_={},hh_={},fh_={},dh_={},ph_={},gh_={},mh_={},vh_={},yh_={},bh_={},_h_={},wh_={},xh_={},Th_={},Sh_={},kh_={},Ch_={},Ph_={},Ah_={},Eh_={},Oh_={},Dh_={},Mh_={},Rh_={},Ih_={},Lh_={},zh_={},Nh_={},jh_={},Fh_={},Bh_={},Hh_={},Gh_={},Vh_={},Uh_={},Wh_={},Yh_={},qh_={},Xh_={},Zh_={},$h_={},Jh_={},Kh_={},Qh_={},tf_={},ef_={},nf_={},if_={},of_={},rf_={},sf_={},af_={},lf_={},uf_={},cf_={},hf_={},ff_={},df_={},pf_={},gf_={},mf_={},vf_={},yf_={},bf_={},_f_={},wf_={},xf_={},Tf_={},Sf_={},kf_={},Cf_={},Pf_={},Af_={},Ef_={},Of_={},Df_={},Mf_={},Rf_={},If_={},Lf_={},zf_={},Nf_={},jf_={},Ff_={},Bf_={},Hf_={},Gf_={},Vf_={},Uf_={},Wf_={},Yf_={},qf_={},Xf_={},Zf_={},$f_={},Jf_={},Kf_={},Qf_={},td_={},ed_={},nd_={},id_={},od_={},rd_={},sd_={},ad_={},ld_={},ud_={},cd_={},hd_={},fd_={},dd_={},pd_={},gd_={},md_={},vd_={},yd_={},bd_={},_d_={},wd_={},xd_={},Td_={},Sd_={},kd_={},Cd_={},Pd_={},Ad_={},Ed_={},Od_={},Dd_={},Md_={},Rd_={},Id_={},Ld_={},zd_={},Nd_={},jd_={},Fd_={},Bd_={},Hd_={},Gd_={},Vd_={},Ud_={},Wd_={},Yd_={},qd_={},Xd_={},Zd_={},$d_={},Jd_={},Kd_={},Qd_={},tp_={},ep_={},np_={},ip_={},op_={},rp_={},sp_={},ap_={},lp_={},up_={},cp_={},hp_={},fp_={},dp_={},pp_={},gp_={},mp_={},vp_={},yp_={},bp_={},_p_={},wp_={},xp_={},Tp_={},Sp_={},kp_={},Cp_={},Pp_={},Ap_={},Ep_={},Op_={},Dp_={},Mp_={},Rp_={},Ip_={},Lp_={},zp_={},Np_={},jp_={},Fp_={},Bp_={},Hp_={},Gp_={},Vp_={},Up_={},Wp_={},Yp_={},qp_={},Xp_={},Zp_={},$p_={},Jp_={},Kp_={},Qp_={},tv_={},ev_={},nv_={},iv_={},ov_={},rv_={},sv_={},av_={},lv_={},uv_={},cv_={},hv_={},fv_={},dv_={},pv_={},gv_={},mv_={},vv_={},yv_={},bv_={},_v_={},wv_={},xv_={},Tv_={},Sv_={},kv_={},Cv_={},Pv_={},Av_={},Ev_={},Ov_={},Dv_={},Mv_={},Rv_={},Iv_={},Lv_={},zv_={},Nv_={},jv_={},Fv_={},Bv_={},Hv_={},Gv_={},Vv_={},Uv_={},Wv_={},Yv_={},qv_={},Xv_={},Zv_={},$v_={},Jv_={},Kv_={},Qv_={},ty_={},ey_={},ny_={},iy_={},oy_={},ry_={},sy_={},ay_={},ly_={},uy_={},cy_={},hy_={},fy_={},dy_={},py_={},gy_={},my_={},vy_={},yy_={},by_={},_y_={},wy_={},xy_={},Ty_={},Sy_={},ky_={},Cy_={},Py_={},Ay_={},Ey_={},Oy_={},Dy_={},My_={},Ry_={},Iy_={},Ly_={},zy_={},Ny_={},jy_={},Fy_={},By_={},Hy_={},Gy_={},Vy_={},Uy_={},Wy_={},Yy_={},qy_={},Xy_={},Zy_={},$y_={},Jy_={},Ky_={},Qy_={},t__={},e__={},n__={},i__={},o__={},r__={},s__={},a__={},l__={},u__={},c__={},h__={},f__={},d__={},p__={},g__={},m__={},v__={},y__={},b__={},__={},w__={},x__={},T__={},S__={},k__={},C__={},P__={},A__={},E__={},O__={},D__={},M__={},R__={},I__={},L__={},z__={},N__={},j__={},F__={},B__={},H__={},G__={},V__={},U__={},W__={},Y__={},q__={},X__={},Z__={},$__={},J__={},K__={},Q__={},tt__={},et__={},nt__={},it__={},ot__={},rt__={},st__={},at__={},lt__={},ut__={},ct__={},ht__={},ft__={},dt__={},pt__={},gt__={},mt__={},vt__={},yt__={},bt__={},_t__={},wt__={},xt__={},Tt__={},St__={},kt__={},Ct__={},Pt__={},At__={},Et__={},Ot__={},Dt__={},Mt__={},Rt__={},It__={},Lt__={},zt__={},Nt__={},jt__={},Ft__={},Bt__={},Ht__={},Gt__={},Vt__={},Ut__={},Wt__={},Yt__={},qt__={},Xt__={},Zt__={},$t__={},Jt__={},Kt__={},Qt__={},te__={},ee__={},ne__={},ie__={},oe__={},re__={},se__={},ae__={},le__={},ue__={},ce__={},he__={},fe__={},de__={},pe__={},ge__={},me__={},ve__={},ye__={},be__={},_e__={},we__={},xe__={},Te__={},Se__={},ke__={},Ce__={},Pe__={},Ae__={},Ee__={},Oe__={},De__={},Me__={},Re__={},Ie__={},Le__={},ze__={},Ne__={},je__={},Fe__={},Be__={},He__={},Ge__={},Ve__={},Ue__={},We__={},Ye__={},qe__={},Xe__={},Ze__={},$e__={},Je__={},Ke__={},Qe__={},tn__={},en__={},nn__={},on__={},rn__={},sn__={},an__={},ln__={},un__={},cn__={},hn__={},fn__={},dn__={},pn__={},gn__={},mn__={},vn__={},yn__={},bn__={},_n__={},wn__={},xn__={},Tn__={},Sn__={},kn__={},Cn__={},Pn__={},An__={},En__={},On__={},Dn__={},Mn__={},Rn__={},In__={},Ln__={},zn__={},Nn__={},jn__={},Fn__={},Bn__={},Hn__={},Gn__={},Vn__={},Un__={},Wn__={},Yn__={},qn__={},Xn__={},Zn__={},$n__={},Jn__={},Kn__={},Qn__={},ti__={},ei__={},ni__={},ii__={},oi__={},ri__={},si__={},ai__={},li__={},ui__={},ci__={},hi__={},fi__={},di__={},pi__={},gi__={},mi__={},vi__={},yi__={},bi__={},_i__={},wi__={},xi__={},Ti__={},Si__={},ki__={},Ci__={},Pi__={},Ai__={},Ei__={},Oi__={},Di__={},Mi__={},Ri__={},Ii__={},Li__={},zi__={},Ni__={},ji__={},Fi__={},Bi__={},Hi__={},Gi__={},Vi__={},Ui__={},Wi__={},Yi__={},qi__={},Xi__={},Zi__={},$i__={},Ji__={},Ki__={},Qi__={},to__={},eo__={},no__={},io__={},oo__={},ro__={},so__={},ao__={},lo__={},uo__={},co__={},ho__={},fo__={},po__={},go__={},mo__={},vo__={},yo__={},bo__={},_o__={},wo__={},xo__={},To__={},So__={},ko__={},Co__={},Po__={},Ao__={},Eo__={},Oo__={},Do__={},Mo__={},Ro__={},Io__={},Lo__={},zo__={},No__={},jo__={},Fo__={},Bo__={},Ho__={},Go__={},Vo__={},Uo__={},Wo__={},Yo__={},qo__={},Xo__={},Zo__={},$o__={},Jo__={},Ko__={},Qo__={},tr__={},er__={},nr__={},ir__={},or__={},rr__={},sr__={},ar__={},lr__={},ur__={},cr__={},hr__={},fr__={},dr__={},pr__={},gr__={},mr__={},vr__={},yr__={},br__={},_r__={},wr__={},xr__={},Tr__={},Sr__={},kr__={},Cr__={},Pr__={},Ar__={},Er__={},Or__={},Dr__={},Mr__={},Rr__={},Ir__={},Lr__={},zr__={},Nr__={},jr__={},Fr__={},Br__={},Hr__={},Gr__={},Vr__={},Ur__={},Wr__={},Yr__={},qr__={},Xr__={},Zr__={},$r__={},Jr__={},Kr__={},Qr__={},ts__={},es__={},ns__={},is__={},os__={},rs__={},ss__={},as__={},ls__={},us__={},cs__={},hs__={},fs__={},ds__={},ps__={},gs__={},ms__={},vs__={},ys__={},bs__={},_s__={},ws__={},xs__={},Ts__={},Ss__={},ks__={},Cs__={},Ps__={},As__={},Es__={},Os__={},Ds__={},Ms__={},Rs__={},Is__={},Ls__={},zs__={},Ns__={},js__={},Fs__={},Bs__={},Hs__={},Gs__={},Vs__={},Us__={},Ws__={},Ys__={},qs__={},Xs__={},Zs__={},$s__={},Js__={},Ks__={},Qs__={},ta__={},ea__={},na__={},ia__={},oa__={},ra__={},sa__={},aa__={},la__={},ua__={},ca__={},ha__={},fa__={},da__={},pa__={},ga__={},ma__={},va__={},ya__={},ba__={},_a__={},wa__={},xa__={},Ta__={},Sa__={},ka__={},Ca__={},Pa__={},Aa__={},Ea__={},Oa__={},Da__={},Ma__={},Ra__={},Ia__={},La__={},za__={},Na__={},ja__={},Fa__={},Ba__={},Ha__={},Ga__={},Va__={},Ua__={},Wa__={},Ya__={},qa__={},Xa__={},Za__={},$a__={},Ja__={},Ka__={},Qa__={},tl__={},el__={},nl__={},il__={},ol__={},rl__={},sl__={},al__={},ll__={},ul__={},cl__={},hl__={},fl__={},dl__={},pl__={},gl__={},ml__={},vl__={},yl__={},bl__={},_l__={},wl__={},xl__={},Tl__={},Sl__={},kl__={},Cl__={},Pl__={},Al__={},El__={},Ol__={},Dl__={},Ml__={},Rl__={},Il__={},Ll__={},zl__={},Nl__={},jl__={},Fl__={},Bl__={},Hl__={},Gl__={},Vl__={},Ul__={},Wl__={},Yl__={},ql__={},Xl__={},Zl__={},$l__={},Jl__={},Kl__={},Ql__={},tc__={},ec__={},nc__={},ic__={},oc__={},rc__={},sc__={},ac__={},lc__={},uc__={},cc__={},hc__={},fc__={},dc__={},pc__={},gc__={},mc__={},vc__={},yc__={},bc__={},_c__={},wc__={},xc__={},Tc__={},Sc__={},kc__={},Cc__={},Pc__={},Ac__={},Ec__={},Oc__={},Dc__={},Mc__={},Rc__={},Ic__={},Lc__={},zc__={},Nc__={},jc__={},Fc__={},Bc__={},Hc__={},Gc__={},Vc__={},Uc__={},Wc__={},Yc__={},qc__={},Xc__={},Zc__={},$c__={},Jc__={},Kc__={},Qc__={},th__={},eh__={},nh__={},ih__={},oh__={},rh__={},sh__={},ah__={},lh__={},uh__={},ch__={},hh__={},fh__={},dh__={},ph__={},gh__={},mh__={},vh__={},yh__={},bh__={},_h__={},wh__={},xh__={},Th__={},Sh__={},kh__={},Ch__={},Ph__={},Ah__={},Eh__={},Oh__={},Dh__={},Mh__={},Rh__={},Ih__={},Lh__={},zh__={},Nh__={},jh__={},Fh__={},Bh__={},Hh__={},Gh__={},Vh__={},Uh__={},Wh__={},Yh__={},qh__={},Xh__={},Zh__={},$h__={},Jh__={},Kh__={},Qh__={},tf__={},ef__={},nf__={},if__={},of__={},rf__={},sf__={},af__={},lf__={},uf__={},cf__={},hf__={},ff__={},df__={},pf__={},gf__={},mf__={},vf__={},yf__={},bf__={},_f__={},wf__={},xf__={},Tf__={},Sf__={},kf__={},Cf__={},Pf__={},Af__={},Ef__={},Of__={},Df__={},Mf__={},Rf__={},If__={},Lf__={},zf__={},Nf__={},jf__={},Ff__={},Bf__={},Hf__={},Gf__={},Vf__={},Uf__={},Wf__={},Yf__={},qf__={},Xf__={},Zf__={},$f__={},Jf__={},Kf__={},Qf__={},td__={},ed__={},nd__={},id__={},od__={},rd__={},sd__={},ad__={},ld__={},ud__={},cd__={},hd__={},fd__={},dd__={},pd__={},gd__={},md__={},vd__={},yd__={},bd__={},_d__={},wd__={},xd__={},Td__={},Sd__={},kd__={},Cd__={},Pd__={},Ad__={},Ed__={},Od__={},Dd__={},Md__={},Rd__={},Id__={},Ld__={},zd__={},Nd__={},jd__={},Fd__={},Bd__={},Hd__={},Gd__={},Vd__={},Ud__={},Wd__={},Yd__={},qd__={},Xd__={},Zd__={},$d__={},Jd__={},Kd__={},Qd__={},tp__={},ep__={},np__={},ip__={},op__={},rp__={},sp__={},ap__={},lp__={},up__={},cp__={},hp__={},fp__={},dp__={},pp__={},gp__={},mp__={},vp__={},yp__={},bp__={},_p__={},wp__={},xp__={},Tp__={},Sp__={},kp__={},Cp__={},Pp__={},Ap__={},Ep__={},Op__={},Dp__={},Mp__={},Rp__={},Ip__={},Lp__={},zp__={},Np__={},jp__={},Fp__={},Bp__={},Hp__={},Gp__={},Vp__={},Up__={},Wp__={},Yp__={},qp__={},Xp__={},Zp__={},$p__={},Jp__={},Kp__={},Qp__={},tv__={},ev__={},nv__={},iv__={},ov__={},rv__={},sv__={},av__={},lv__={},uv__={},cv__={},hv__={},fv__={},dv__={},pv__={},gv__={},mv__={},vv__={},yv__={},bv__={},_v__={},wv__={},xv__={},Tv__={},Sv__={},kv__={},Cv__={},Pv__={},Av__={},Ev__={},Ov__={},Dv__={},Mv__={},Rv__={},Iv__={},Lv__={},zv__={},Nv__={},jv__={},Fv__={},Bv__={},Hv__={},Gv__={},Vv__={},Uv__={},Wv__={},Yv__={},qv__={},Xv__={},Zv__={},$v__={},Jv__={},Kv__={},Qv__={},ty__={},ey__={},ny__={},iy__={},oy__={},ry__={},sy__={},ay__={},ly__={},uy__={},cy__={},hy__={},fy__={},dy__={},py__={},gy__={},my__={},vy__={},yy__={},by__={},_y__={},wy__={},xy__={},Ty__={},Sy__={},ky__={},Cy__={},Py__={},Ay__={},Ey__={},Oy__={},Dy__={},My__={},Ry__={},Iy__={},Ly__={},zy__={},Ny__={},jy__={},Fy__={},By__={},Hy__={},Gy__={},Vy__={},Uy__={},Wy__={},Yy__={},qy__={},Xy__={},Zy__={},$y__={},Jy__={},Ky__={},Qy__={},t___={},e___={},n___={},i___={},o___={},r___={},s___={},a___={},l___={},u___={},c___={},h___={},f___={},d___={},p___={},g___={},m___={},v___={},y___={},b___={},___={},w___={},x___={},T___={},S___={},k___={},C___={},P___={},A___={},E___={},O___={},D___={},M___={},R___={},I___={},L___={},z___={},N___={},j___={},F___={},B___={},H___={},G___={},V___={},U___={},W___={},Y___={},q___={},X___={},Z___={},$___={},J___={},K___={},Q___={},tt___={},et___={},nt___={},it___={},ot___={},rt___={},st___={},at___={},lt___={},ut___={},ct___={},ht___={},ft___={},dt___={},pt___={},gt___={},mt___={},vt___={},yt___={},bt___={},_t___={},wt___={},xt___={},Tt___={},St___={},kt___={},Ct___={},Pt___={},At___={},Et___={},Ot___={},Dt___={},Mt___={},Rt___={},It___={},Lt___={},zt___={},Nt___={},jt___={},Ft___={},Bt___={},Ht___={},Gt___={},Vt___={},Ut___={},Wt___={},Yt___={},qt___={},Xt___={},Zt___={},$t___={},Jt___={},Kt___={},Qt___={},te___={},ee___={},ne___={},ie___={},oe___={},re___={},se___={},ae___={},le___={},ue___={},ce___={},he___={},fe___={},de___={},pe___={},ge___={},me___={},ve___={},ye___={},be___={},_e___={},we___={},xe___={},Te___={},Se___={},ke___={},Ce___={},Pe___={},Ae___={},Ee___={},Oe___={},De___={},Me___={},Re___={},Ie___={},Le___={},ze___={},Ne___={},je___={},Fe___={},Be___={},He___={},Ge___={},Ve___={},Ue___={},We___={},Ye___={},qe___={},Xe___={},Ze___={},$e___={},Je___={},Ke___={},Qe___={},tn___={},en___={},nn___={},on___={},rn___={},sn___={},an___={},ln___={},un___={},cn___={},hn___={},fn___={},dn___={},pn___={},gn___={},mn___={},vn___={},yn___={},bn___={},_n___={},wn___={},xn___={},Tn___={},Sn___={},kn___={},Cn___={},Pn___={},An___={},En___={},On___={},Dn___={},Mn___={},Rn___={},In___={},Ln___={},zn___={},Nn___={},jn___={},Fn___={},Bn___={},Hn___={},Gn___={},Vn___={},Un___={},Wn___={},Yn___={},qn___={},Xn___={},Zn___={},$n___={},Jn___={},Kn___={},Qn___={},ti___={},ei___={},ni___={},ii___={},oi___={},ri___={},si___={},ai___={},li___={},ui___={},ci___={},hi___={},fi___={},di___={},pi___={},gi___={},mi___={},vi___={},yi___={},bi___={},_i___={},wi___={},xi___={},Ti___={},Si___={},ki___={},Ci___={},Pi___={},Ai___={},Ei___={},Oi___={},Di___={},Mi___={},Ri___={},Ii___={},Li___={},zi___={},Ni___={},ji___={},Fi___={},Bi___={},Hi___={},Gi___={},Vi___={},Ui___={},Wi___={},Yi___={},qi___={},Xi___={},Zi___={},$i___={},Ji___={},Ki___={},Qi___={},to___={},eo___={},no___={},io___={},oo___={},ro___={},so___={},ao___={},lo___={},uo___={},co___={},ho___={},fo___={},po___={},go___={},mo___={},vo___={},yo___={},bo___={},_o___={},wo___={},xo___={},To___={},So___={},ko___={},Co___={},Po___={},Ao___={},Eo___={},Oo___={},Do___={},Mo___={},Ro___={},Io___={},Lo___={},zo___={},No___={},jo___={},Fo___={},Bo___={},Ho___={},Go___={},Vo___={},Uo___={},Wo___={},Yo___={},qo___={},Xo___={},Zo___={},$o___={},Jo___={},Ko___={},Qo___={},tr___={},er___={},nr___={},ir___={},or___={},rr___={},sr___={},ar___={},lr___={},ur___={},cr___={},hr___={},fr___={},dr___={},pr___={},gr___={},mr___={},vr___={},yr___={},br___={},_r___={},wr___={},xr___={},Tr___={},Sr___={},kr___={},Cr___={},Pr___={},Ar___={},Er___={},Or___={},Dr___={},Mr___={},Rr___={},Ir___={},Lr___={},zr___={},Nr___={},jr___={},Fr___={},Br___={},Hr___={},Gr___={},Vr___={},Ur___={},Wr___={},Yr___={},qr___={},Xr___={},Zr___={},$r___={},Jr___={},Kr___={},Qr___={},ts___={},es___={},ns___={},is___={},os___={},rs___={},ss___={},as___={},ls___={},us___={},cs___={},hs___={},fs___={},ds___={},ps___={},gs___={},ms___={},vs___={},ys___={},bs___={},_s___={},ws___={},xs___={},Ts___={},Ss___={},ks___={},Cs___={},Ps___={},As___={},Es___={},Os___={},Ds___={},Ms___={},Rs___={},Is___={},Ls___={},zs___={},Ns___={},js___={},Fs___={},Bs___={},Hs___={},Gs___={},Vs___={},Us___={},Ws___={},Ys___={},qs___={},Xs___={},Zs___={},$s___={},Js___={},Ks___={},Qs___={},ta___={},ea___={},na___={},ia___={},oa___={},ra___={},sa___={},aa___={},la___={},ua___={},ca___={},ha___={},fa___={},da___={},pa___={},ga___={},ma___={},va___={},ya___={},ba___={},_a___={},wa___={},xa___={},Ta___={},Sa___={},ka___={},Ca___={},Pa___={},Aa___={},Ea___={},Oa___={},Da___={},Ma___={},Ra___={},Ia___={},La___={},za___={},Na___={},ja___={},Fa___={},Ba___={},Ha___={},Ga___={},Va___={},Ua___={},Wa___={},Ya___={},qa___={},Xa___={},Za___={},$a___={},Ja___={},Ka___={},Qa___={},tl___={},el___={},nl___={},il___={},ol___={},rl___={},sl___={},al___={},ll___={},ul___={},cl___={},hl___={},fl___={},dl___={},pl___={},gl___={},ml___={},vl___={},yl___={},bl___={},_l___={},wl___={},xl___={},Tl___={},Sl___={},kl___={},Cl___={},Pl___={},Al___={},El___={},Ol___={},Dl___={},Ml___={},Rl___={},Il___={},Ll___={},zl___={},Nl___={},jl___={},Fl___={},Bl___={},Hl___={},Gl___={},Vl___={},Ul___={},Wl___={},Yl___={},ql___={},Xl___={},Zl___={},$l___={},Jl___={},Kl___={},Ql___={},tc___={},ec___={},nc___={},ic___={},oc___={},rc___={},sc___={},ac___={},lc___={},uc___={},cc___={},hc___={},fc___={},dc___={},pc___={},gc___={},mc___={},vc___={},yc___={},bc___={},_c___={},wc___={},xc___={},Tc___={},Sc___={},kc___={},Cc___={},Pc___={},Ac___={},Ec___={},Oc___={},Dc___={},Mc___={},Rc___={},Ic___={},Lc___={},zc___={},Nc___={},jc___={},Fc___={},Bc___={},Hc___={},Gc___={},Vc___={},Uc___={},Wc___={},Yc___={},qc___={},Xc___={},Zc___={},$c___={},Jc___={},Kc___={},Qc___={},th___={},eh___={},nh___={},ih___={},oh___={},rh___={},sh___={},ah___={},lh___={},uh___={},ch___={},hh___={},fh___={},dh___={},ph___={},gh___={},mh___={},vh___={},yh___={},bh___={},_h___={},wh___={},xh___={},Th___={},Sh___={},kh___={},Ch___={},Ph___={},Ah___={},Eh___={},Oh___={},Dh___={},Mh___={},Rh___={},Ih___={},Lh___={},zh___={},Nh___={},jh___={},Fh___={},Bh___={},Hh___={},Gh___={},Vh___={},Uh___={},Wh___={},Yh___={},qh___={},Xh___={},Zh___={},$h___={},Jh___={},Kh___={},Qh___={},tf___={},ef___={},nf___={},if___={},of___={},rf___={},sf___={},af___={},lf___={},uf___={},cf___={},hf___={},ff___={},df___={},pf___={},gf___={},mf___={},vf___={},yf___={},bf___={},_f___={},wf___={},xf___={},Tf___={},Sf___={},kf___={},Cf___={},Pf___={},Af___={},Ef___={},Of___={},Df___={},Mf___={},Rf___={},If___={},Lf___={},zf___={},Nf___={},jf___={},Ff___={},Bf___={},Hf___={},Gf___={},Vf___={},Uf___={},Wf___={},Yf___={},qf___={},Xf___={},Zf___={},$f___={},Jf___={},Kf___={},Qf___={},td___={},ed___={},nd___={},id___={},od___={},rd___={},sd___={},ad___={},ld___={},ud___={},cd___={},hd___={},fd___={},dd___={},pd___={},gd___={},md___={},vd___={},yd___={},bd___={},_d___={},wd___={},xd___={},Td___={},Sd___={},kd___={},Cd___={},Pd___={},Ad___={},Ed___={},Od___={},Dd___={},Md___={},Rd___={},Id___={},Ld___={},zd___={},Nd___={},jd___={},Fd___={},Bd___={},Hd___={},Gd___={},Vd___={},Ud___={},Wd___={},Yd___={},qd___={},Xd___={},Zd___={},$d___={},Jd___={},Kd___={},Qd___={},tp___={},ep___={},np___={},ip___={},op___={},rp___={},sp___={},ap___={},lp___={},up___={},cp___={},hp___={},fp___={},dp___={},pp___={},gp___={},mp___={},vp___={},yp___={},bp___={},_p___={},wp___={},xp___={},Tp___={},Sp___={},kp___={},Cp___={},Pp___={},Ap___={},Ep___={},Op___={},Dp___={},Mp___={},Rp___={},Ip___={},Lp___={},zp___={},Np___={},jp___={},Fp___={},Bp___={},Hp___={},Gp___={},Vp___={},Up___={},Wp___={},Yp___={},qp___={},Xp___={},Zp___={},$p___={},Jp___={},Kp___={},Qp___={},tv___={},ev___={},nv___={},iv___={},ov___={},rv___={},sv___={},av___={},lv___={},uv___={},cv___={},hv___={},fv___={},dv___={},pv___={},gv___={},mv___={},vv___={},yv___={},bv___={},_v___={},wv___={},xv___={},Tv___={},Sv___={},kv___={},Cv___={},Pv___={},Av___={},Ev___={},Ov___={},Dv___={},Mv___={},Rv___={},Iv___={},Lv___={},zv___={},Nv___={},jv___={},Fv___={},Bv___={},Hv___={},Gv___={},Vv___={},Uv___={},Wv___={},Yv___={},qv___={},Xv___={},Zv___={},$v___={},Jv___={},Kv___={},Qv___={},ty___={},ey___={},ny___={},iy___={},oy___={},ry___={},sy___={},ay___={},ly___={},uy___={},cy___={},hy___={},fy___={},dy___={},py___={},gy___={},my___={},vy___={},yy___={},by___={},_y___={},wy___={},xy___={},Ty___={},Sy___={},ky___={},Cy___={},Py___={},Ay___={},Ey___={},Oy___={},Dy___={},My___={},Ry___={},Iy___={},Ly___={},zy___={},Ny___={},jy___={},Fy___={},By___={},Hy___={},Gy___={},Vy___={},Uy___={},Wy___={},Yy___={},qy___={},Xy___={},Zy___={},$y___={},Jy___={},Ky___={},Qy___={},t____={},e____={},n____={},i____={},o____={},r____={},s____={},a____={},l____={},u____={},c____={},h____={},f____={},d____={},p____={},g____={},m____={},v____={},y____={},b____={},____={},w____={},x____={},T____={},S____={},k____={},C____={},P____={},A____={},E____={},O____={},D____={},M____={},R____={},I____={},L____={},z____={},N____={},j____={},F____={},B____={},H____={},G____={},V____={},U____={},W____={},Y____={},q____={},X____={},Z____={},$____={},J____={},K____={},Q____={},tt____={},et____={},nt____={},it____={},ot____={},rt____={},st____={},at____={},lt____={},ut____={},ct____={},ht____={},ft____={},dt____={},pt____={},gt____={},mt____={},vt____={},yt____={},bt____={},_t____={},wt____={},xt____={},Tt____={},St____={},kt____={},Ct____={},Pt____={},At____={},Et____={},Ot____={},Dt____={},Mt____={},Rt____={},It____={},Lt____={},zt____={},Nt____={},jt____={},Ft____={},Bt____={},Ht____={},Gt____={},Vt____={},Ut____={},Wt____={},Yt____={},qt____={},Xt____={},Zt____={},$t____={},Jt____={},Kt____={},Qt____={},te____={},ee____={},ne____={},ie____={},oe____={},re____={},se____={},ae____={},le____={},ue____={},ce____={},he____={},fe____={},de____={},pe____={},ge____={},me____={},ve____={},ye____={},be____={},_e____={},we____={},xe____={},Te____={},Se____={},ke____={},Ce____={},Pe____={},Ae____={},Ee____={},Oe____={},De____={},Me____={},Re____={},Ie____={},Le____={},ze____={},Ne____={},je____={},Fe____={},Be____={},He____={},Ge____={},Ve____={},Ue____={},We____={},Ye____={},qe____={},Xe____={},Ze____={},$e____={},Je____={},Ke____={},Qe____={},tn____={},en____={},nn____={},on____={},rn____={},sn____={},an____={},ln____={},un____={},cn____={},hn____={},fn____={},dn____={},pn____={},gn____={},mn____={},vn____={},yn____={},bn____={},_n____={},wn____={},xn____={},Tn____={},Sn____={},kn____={},Cn____={},Pn____={},An____={},En____={},On____={},Dn____={},Mn____={},Rn____={},In____={},Ln____={},zn____={},Nn____={},jn____={},Fn____={},Bn____={},Hn____={},Gn____={},Vn____={},Un____={},Wn____={},Yn____={},qn____={},Xn____={},Zn____={},$n____={},Jn____={},Kn____={},Qn____={},ti____={},ei____={},ni____={},ii____={},oi____={},ri____={},si____={},ai____={},li____={},ui____={},ci____={},hi____={},fi____={},di____={},pi____={},gi____={},mi____={},vi____={},yi____={},bi____={},_i____={},wi____={},xi____={},Ti____={},Si____={},ki____={},Ci____={},Pi____={},Ai____={},Ei____={},Oi____={},Di____={},Mi____={},Ri____={},Ii____={},Li____={},zi____={},Ni____={},ji____={},Fi____={},Bi____={},Hi____={},Gi____={},Vi____={},Ui____={},Wi____={},Yi____={},qi____={},Xi____={},Zi____={},$i____={},Ji____={},Ki____={},Qi____={},to____={},eo____={},no____={},io____={},oo____={},ro____={},so____={},ao____={},lo____={},uo____={},co____={},ho____={},fo____={},po____={},go____={},mo____={},vo____={},yo____={},bo____={},_o____={},wo____={},xo____={},To____={},So____={},ko____={},Co____={},Po____={},Ao____={},Eo____={},Oo____={},Do____={},Mo____={},Ro____={},Io____={},Lo____={},zo____={},No____={},jo____={},Fo____={},Bo____={},Ho____={},Go____={},Vo____={},Uo____={},Wo____={},Yo____={},qo____={},Xo____={},Zo____={},$o____={},Jo____={},Ko____={},Qo____={},tr____={},er____={},nr____={},ir____={},or____={},rr____={},sr____={},ar____={},lr____={},ur____={},cr____={},hr____={},fr____={},dr____={},pr____={},gr____={},mr____={},vr____={},yr____={},br____={},_r____={},wr____={},xr____={},Tr____={},Sr____={},kr____={},Cr____={},Pr____={},Ar____={},Er____={},Or____={},Dr____={},Mr____={},Rr____={},Ir____={},Lr____={},zr____={},Nr____={},jr____={},Fr____={},Br____={},Hr____={},Gr____={},Vr____={},Ur____={},Wr____={},Yr____={},qr____={},Xr____={},Zr____={},$r____={},Jr____={},Kr____={},Qr____={},ts____={},es____={},ns____={},is____={},os____={},rs____={},ss____={},as____={},ls____={},us____={},cs____={},hs____={},fs____={},ds____={},ps____={},gs____={},ms____={},vs____={},ys____={},bs____={},_s____={},ws____={},xs____={},Ts____={},Ss____={},ks____={},Cs____={},Ps____={},As____={},Es____={},Os____={},Ds____={},Ms____={},Rs____={},Is____={},Ls____={},zs____={},Ns____={},js____={},Fs____={},Bs____={},Hs____={},Gs____={},Vs____={},Us____={},Ws____={},Ys____={},qs____={},Xs____={},Zs____={},$s____={},Js____={},Ks____={},Qs____={},ta____={},ea____={},na____={},ia____={},oa____={},ra____={},sa____={},aa____={},la____={},ua____={},ca____={},ha____={},fa____={},da____={},pa____={},ga____={},ma____={},va____={},ya____={},ba____={},_a____={},wa____={},xa____={},Ta____={},Sa____={},ka____={},Ca____={},Pa____={},Aa____={},Ea____={},Oa____={},Da____={},Ma____={},Ra____={},Ia____={},La____={},za____={},Na____={},ja____={},Fa____={},Ba____={},Ha____={},Ga____={},Va____={},Ua____={},Wa____={},Ya____={},qa____={},Xa____={},Za____={},$a____={},Ja____={},Ka____={},Qa____={},tl____={},el____={},nl____={},il____={},ol____={},rl____={},sl____={},al____={},ll____={},ul____={},cl____={},hl____={},fl____={},dl____={},pl____={},gl____={},ml____={},vl____={},yl____={},bl____={},_l____={},wl____={},xl____={},Tl____={},Sl____={},kl____={},Cl____={},Pl____={},Al____={},El____={},Ol____={},Dl____={},Ml____={},Rl____={},Il____={},Ll____={},zl____={},Nl____={},jl____={},Fl____={},Bl____={},Hl____={},Gl____={},Vl____={},Ul____={},Wl____={},Yl____={},ql____={},Xl____={},Zl____={},$l____={},Jl____={},Kl____={},Ql____={},tc____={},ec____={},nc____={},ic____={},oc____={},rc____={},sc____={},ac____={},lc____={},uc____={},cc____={},hc____={},fc____={},dc____={},pc____={},gc____={},mc____={},vc____={},yc____={},bc____={},_c____={},wc____={},xc____={},Tc____={},Sc____={},kc____={},Cc____={},Pc____={},Ac____={},Ec____={},Oc____={},Dc____={},Mc____={},Rc____={},Ic____={},Lc____={},zc____={},Nc____={},jc____={},Fc____={},Bc____={},Hc____={},Gc____={},Vc____={},Uc____={},Wc____={},Yc____={},qc____={},Xc____={},Zc____={},$c____={},Jc____={},Kc____={},Qc____={},th____={},eh____={},nh____={},ih____={},oh____={},rh____={},sh____={},ah____={},lh____={},uh____={},ch____={},hh____={},fh____={},dh____={},ph____={},gh____={},mh____={},vh____={},yh____={},bh____={},_h____={},wh____={},xh____={},Th____={},Sh____={},kh____={},Ch____={},Ph____={},Ah____={},Eh____={},Oh____={},Dh____={},Mh____={},Rh____={},Ih____={},Lh____={},zh____={},Nh____={},jh____={},Fh____={},Bh____={},Hh____={},Gh____={},Vh____={},Uh____={},Wh____={},Yh____={},qh____={},Xh____={},Zh____={},$h____={},Jh____={},Kh____={},Qh____={},tf____={},ef____={},nf____={},if____={},of____={},rf____={},sf____={},af____={},lf____={},uf____={},cf____={},hf____={},ff____={},df____={},pf____={},gf____={},mf____={},vf____={},yf____={},bf____={},_f____={},wf____={},xf____={},Tf____={},Sf____={},kf____={},Cf____={},Pf____={},Af____={},Ef____={},Of____={},Df____={},Mf____={},Rf____={},If____={},Lf____={},zf____={},Nf____={},jf____={},Ff____={},Bf____={},Hf____={},Gf____={},Vf____={},Uf____={},Wf____={},Yf____={},qf____={},Xf____={},Zf____={},$f____={},Jf____={},Kf____={},Qf____={},td____={},ed____={},nd____={},id____={},od____={},rd____={},sd____={},ad____={},ld____={},ud____={},cd____={},hd____={},fd____={},dd____={},pd____={},gd____={},md____={},vd____={},yd____={},bd____={},_d____={},wd____={},xd____={},Td____={},Sd____={},kd____
